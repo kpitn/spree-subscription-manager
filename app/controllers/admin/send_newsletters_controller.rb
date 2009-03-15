@@ -19,7 +19,7 @@ class Admin::SendNewslettersController < ApplicationController
   def create
     users=User.find(:all,:include=>:subscriptions)
 
-    100.times do
+    1.times do
       users.each do |user|
           NewsletterMailer.deliver_send_newsletter(@newsletter,user) rescue next
       end
