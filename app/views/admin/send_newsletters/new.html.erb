@@ -1,0 +1,7 @@
+<h1><%= t("new_newsletter") %></h1>
+
+<br/>
+<%= link_to t('send_newsletter'), "/admin/newsletters/#{@newsletter.id}/send_newsletters/" , :method=>:post %>
+<br/>
+<br/>
+<%= link_to t('cancel'), admin_newsletters_path %>

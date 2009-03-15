@@ -1,0 +1,30 @@
+
+<% if @newsletters.size>0 %>
+<table>
+  <thead>
+    <th><%= t("subject") %></th>
+    <th><%= t("created_at") %></th>
+    <th><%= t("updated_at") %></th>
+    <th><%= t("sended_at") %></th>
+    <th><%= t("action") %></th>
+  </thead>
+  <tbody>
+    <% @newsletters.each do |newsletter| %>
+    <tr><td><%= newsletter.subject %></td>
+    <td><%= l(newsletter.created_at) %></td>
+    <td><%= l(newsletter.updated_at) %></td>
+    <td><%= l(newsletter.sended_at) if !newsletter.sended_at.nil? %></td>
+    <td><%= link_to(t("send"), new_admin_newsletter_send_newsletter_path(newsletter) ) %></td>
+    <td><%= link_to(t("edit"),edit_admin_newsletter_path(newsletter)) %></td>
+    <td><%= link_to(t("destroy"),[:admin, newsletter], :method => :delete,:confirm=>t("are_you_sure_delete_newsletter")) %>
+    </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
+  <%= t("empty_newsletter") %>
+<% end %>
+
+<br/>
+<%= link_to t("add_newsletter"),new_admin_newsletter_path %>

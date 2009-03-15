@@ -1,0 +1,10 @@
+<h1><%= t("edit_newsletter") %></h1>
+
+<% form_for [:admin, @newsletter] do |f| %>
+  <%= render :partial => f %>
+  <%= f.submit t("update") %>
+<% end %>
+
+<%= link_to t('back'), admin_newsletters_path %>
+
+
