@@ -1,0 +1,11 @@
+fr-FR:
+  add_newsletter: "Ajouter une newsletter"
+  send_newsletter: "Envoyer la newsletter"
+  edit_newsletter: "Modifier la newsletter"
+  newsletter: "Newsletter"
+  are_you_sure_delete_newsletter: "Etes vous sur de vouloir effacer la newsletter ?"
+  send: "Envoyer"
+  subject: "Sujet"
+  created_at: "Crée le"
+  sended_at: "Envoyé le"
+  updated_at: "Modifié le"

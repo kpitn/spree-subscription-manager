@@ -4,7 +4,7 @@
 <p><label for="mailing_list_name"><%= t("subject") %></label><br/>
 <%= form.text_field 'subject' %></p>
 
-<p><%= text_area_tag("newsletter[body]","") %></p>
+<p><%= form.text_area :body %></p>
 
 
 
