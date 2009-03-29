@@ -1,4 +1,4 @@
-class NewsletterMailer < ActionMailer::ARMailer
+class NewsletterMailer < ActionMailer::Base
     self.delivery_method = :activerecord
   
    def send_newsletter(newsletter,user)

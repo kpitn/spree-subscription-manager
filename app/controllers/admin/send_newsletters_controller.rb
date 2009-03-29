@@ -17,7 +17,8 @@ class Admin::SendNewslettersController < Admin::BaseController
   end
 
   def create
-    users=User.find(:all,:include=>:subscriptions)
+    #users=User.find(:all,:include=>:subscriptions)
+    users=User.find_by_sql("select * from users inner join subscriptions ON (users.id=subscriptions.user_id)")
 
     1.times do
       users.each do |user|
