@@ -1,7 +1,9 @@
 <%= error_messages_for 'newsletter' %>
 
+<p><label for="mailing_list"><%= t("mailing_list") %></label><br/>
+  <%= form.select :mailing_list_id, MailingList.find(:all).collect {|p| [ p.name, p.id ] } %><br/></p>
 
-<p><label for="mailing_list_name"><%= t("subject") %></label><br/>
+<p><label for="subject"><%= t("subject") %></label><br/>
 <%= form.text_field 'subject' %></p>
 
 <p><%= form.text_area :body %></p>
@@ -27,7 +29,7 @@ tinyMCE.init({
 	theme_advanced_statusbar_location : "bottom",
 	theme_advanced_resizing : true,
 
-    width:700,
+    width:'100%',
     height:400
 
 });

@@ -18,14 +18,27 @@ class Admin::SendNewslettersController < Admin::BaseController
 
   def create
     #users=User.find(:all,:include=>:subscriptions)
-    users=User.find_by_sql("select * from users inner join subscriptions ON (users.id=subscriptions.user_id)")
+
+    log_ok=Logger.new("#{RAILS_ROOT}/log/newsletter/#{DateTime.now.strftime("%Y%m%d_%H%d%S")}_ok.log")
+    log_not_ok=Logger.new("#{RAILS_ROOT}/log/newsletter/#{DateTime.now.strftime("%Y%m%d_%H%d%S")}_not_ok.log")
+
+    #users=User.find_by_sql("select * from users inner join subscriptions ON (users.id=subscriptions.user_id)")
+    #users=User.find_all_by_login("pierre.basile@gmail.com")
+    users=@newsletter.mailing_list.users
 
     1.times do
       users.each do |user|
-          NewsletterMailer.deliver_send_newsletter(@newsletter,user) rescue next
+        begin
+          NewsletterMailer.deliver_send_newsletter(@newsletter,user)
+          log_ok.info("{User=>\"#{user.login}\"}")
+        rescue
+          log_not_ok.info("{User=>\"#{user.login}\"}")
+          next
+        end
       end
     end
-
+    @newsletter.sended_at=Time.now
+    @newsletter.save
     redirect_to admin_newsletters_path
   end
 

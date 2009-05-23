@@ -1,9 +1,17 @@
 fr-FR:
+  add_mailing_list: "Ajouter une mailing list"
   add_newsletter: "Ajouter une newsletter"
-  send_newsletter: "Envoyer la newsletter"
-  edit_newsletter: "Modifier la newsletter"
-  newsletter: "Newsletter"
   are_you_sure_delete_newsletter: "Etes vous sur de vouloir effacer la newsletter ?"
+  edit_newsletter: "Modifier la newsletter"
+  export_emails_in_csv: "Exporter les emails en csv"
+  listing_mailing_list: "Mailing list existante"
+  mailing_list: "Mailing List"
+  new_mailing_list : "Nouvelle Mailing list"
+  newsletter: "Newsletter"
+  send_newsletter: "Envoyer la newsletter"
+
+
+
   send: "Envoyer"
   subject: "Sujet"
   created_at: "Crée le"

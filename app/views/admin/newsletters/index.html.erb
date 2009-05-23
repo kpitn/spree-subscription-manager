@@ -1,7 +1,9 @@
+<% render :partial => 'admin/shared/mailing_sub_menu' %>
 
 <% if @newsletters.size>0 %>
 <table class="index">
   <thead>
+    <th><%= t("mailing_list") %></th>
     <th><%= t("subject") %></th>
     <th><%= t("created_at") %></th>
     <th><%= t("updated_at") %></th>
@@ -10,7 +12,8 @@
   </thead>
   <tbody>
     <% @newsletters.each do |newsletter| %>
-    <tr><td><%= newsletter.subject %></td>
+    <tr><td><%= newsletter.mailing_list.name %></td>
+    <td><%= newsletter.subject %></td>
     <td><%= l(newsletter.created_at) %></td>
     <td><%= l(newsletter.updated_at) %></td>
     <td><%= l(newsletter.sended_at) if !newsletter.sended_at.nil? %></td>
