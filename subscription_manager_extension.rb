@@ -17,6 +17,8 @@ class SubscriptionManagerExtension < Spree::Extension
 
   def activate
 
+     require 'action_mailer/ar_mailer'
+     
     # Add a partial to get mailing list fields rendered on the user form
     UsersController.class_eval do
       before_filter :add_mailing_list_fields
