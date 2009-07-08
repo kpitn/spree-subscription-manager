@@ -7,6 +7,7 @@ class SubscriptionManagerExtension < Spree::Extension
   url "http://github.com/Gregg/spree_subscription_manager"
 
   define_routes do |map|
+    map.connect "/newsletter", :controller=>"newsletters",:action=>"subscribe"
     map.namespace :admin do |admin|
       admin.resources :mailing_lists
       admin.resources :newsletters do |news|
