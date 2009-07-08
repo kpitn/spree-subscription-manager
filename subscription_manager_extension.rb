@@ -33,7 +33,7 @@ class SubscriptionManagerExtension < Spree::Extension
       before_filter :add_mailing_list_links, :only => :index
 
       def add_mailing_list_links
-        @extension_links << {:link => admin_mailing_lists_path, :link_text => t('Mailing Lists'), :description => "Add Mailing Lists your users can opt-in to."}
+        #@extension_links << {:link => admin_mailing_lists_path, :link_text => t('Mailing Lists'), :description => "Add Mailing Lists your users can opt-in to."}
         @extension_links << {:link => admin_newsletters_path, :link_text => t('newsletter'), :description => "Gestion des newsletters."}
       end
 

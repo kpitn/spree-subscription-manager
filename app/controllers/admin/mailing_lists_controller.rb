@@ -10,6 +10,6 @@ class Admin::MailingListsController <  Admin::BaseController
   end
   
   show.response do |wants|
-    wants.html { render :text => @mailing_list.users.collect(&:email).join(", ")+@mailing_list.subscriptions.select{|i|i.email!=nil}.collect{|i| i.email}.join(", ") }
+    wants.html { render :text => @mailing_list.users.collect(&:email).join(", ")+","+@mailing_list.subscriptions.select{|i|i.email!=nil}.collect{|i| i.email}.join(", ") }
   end
 end
