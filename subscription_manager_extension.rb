@@ -44,7 +44,7 @@ class SubscriptionManagerExtension < Spree::Extension
       has_many :subscriptions
       has_many :mailing_lists, :through => :subscriptions
       attr_accessible :mailing_list
-      
+
       # Use this to subscribe the user from the main form.
       def mailing_list= (val)
         self.subscriptions.each {|sub| sub.destroy }

@@ -19,5 +19,5 @@ class Subscription < ActiveRecord::Base
     pattern = /\A#{addr_spec}\z/
   end
 
-  validates_format_of :email, :with => EmailAddress
+  validates_format_of :email, :with => EmailAddress, :if => "user.id==nil"
 end
