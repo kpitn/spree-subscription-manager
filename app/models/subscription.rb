@@ -18,6 +18,7 @@ class Subscription < ActiveRecord::Base
     addr_spec = "#{local_part}\\x40#{domain}"
     pattern = /\A#{addr_spec}\z/
   end
-
-  validates_format_of :email, :with => EmailAddress, :if => "user.id==nil"
+  
+  validates_presence_of :user_id, :allow_nil => true
+  validates_format_of :email, :with => EmailAddress #, :if => "user.id==nil"
 end
