@@ -10,7 +10,7 @@ class NewslettersController < Spree::BaseController
 
       if params[:newsletter]=="yes"
         if sub.nil?
-          subscription=Subscription.new({:mailing_list_id=>mailing_list.id,:email=>params[:email]})
+          subscription=Subscription.new({:mailing_list_id=>mailing_list.id,:email=>params[:email],:user_id=>nil})
           if subscription.save
             format.js {
               render :update do |page|
