@@ -14,7 +14,7 @@ class NewslettersController < Spree::BaseController
           if subscription.save
             format.js {
               render :update do |page|
-                page << "alert('inscription ok');"
+                page << "alert('Votre inscription a la newsletter a bien été prise en compte. ');"
               end
             }
           else

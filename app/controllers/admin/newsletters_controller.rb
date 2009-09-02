@@ -9,4 +9,9 @@ class Admin::NewslettersController < Admin::BaseController
     wants.html { redirect_to admin_newsletters_path  }
   end
 
+
+  show.response do |wants|
+    wants.html{render :layout=>"newsletter"}
+  end
+
 end
