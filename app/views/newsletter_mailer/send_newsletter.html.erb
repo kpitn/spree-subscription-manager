@@ -1,0 +1,42 @@
+<div marginheight="0" marginwidth="0" bgcolor="#FFFFFF">
+  <table width="555" cellspacing="0" cellpadding="0" border="0" align="center">
+    <tbody><tr>
+        <td align="center">
+          <br/>
+          <font size="2" color="#0582a1" face="Arial, Helvetica, sans-serif"><strong><%= @newsletter.subject %> :  <a target="_blank" style="color: rgb(5, 130, 161); text-decoration: none;" href="http://<%= Spree::Config[:site_url] %>/newsletter/<%= @newsletter.permalink %>"><u>cliquez ici ! </u></a></strong></font><br/>
+          <font size="1" color="#555555" face="Arial, Helvetica, sans-serif">Si ce message ne s'affiche pas correctement, vous pouvez le visualiser <a target="_blank" style="color: rgb(85, 85, 85);" href="http://<%= Spree::Config[:site_url] %>/newsletter/<%= @newsletter.permalink %>"><font color="#555555">grâce à ce lien</font></a><br/>
+            Pour être sûr(e) de recevoir tous nos emails, ajoutez <a target="_blank" href="mailto:newsletter@fxmodelrc.com">newsletter@fxmodelrc.com</a> à votre carnet d'adresses !</font>
+          <br/><br/>
+        </td>
+      </tr>
+    </tbody></table>
+  <table width="555" cellspacing="0" cellpadding="0" border="1" align="center" bgcolor="#f2feff" bordercolor="#0f6269" >
+    <tr><td>
+        <table width="555" cellspacing="0" cellpadding="10" border="0" align="center" bgcolor="#f2feff">
+          <tbody><tr>
+              <td><a target="_blank" href="http://<%= Spree::Config[:site_url] %>"><img border="0" style="display: block;" title="Fxmodel" alt="Fxmodel" src="/images/layout/fxmodel_blue.jpg"/></a></td>
+            </tr>
+            <tr><td>
+                <p><font size="4" color="#00343F" face="Arial, Helvetica, sans-serif">
+                  <%= @newsletter.subject %>
+                </font></p>
+                <font size="2" color="#00343F" face="Arial, Helvetica, sans-serif">
+                  <%= @newsletter.body %>
+                </font>
+              </td></tr>
+          </tbody></table>
+      </td></tr>
+  </table>
+
+
+  <table width="554" cellspacing="0" cellpadding="0" border="0" align="center">
+    <tbody><tr>
+        <td align="center">
+          <font size="1" color="#636363" face="Arial, Helvetica, sans-serif">
+            Si vous ne désirez plus recevoir de messages électroniques de FXmodel, remplissez le formulaire <a target="_blank" style="color: rgb(63, 63, 63);" href="http://<%= Spree::Config[:site_url] %>"><font color="#636363">ici.</font></a><br/>
+            <br/>
+            Si vous souhaitez nous contacter ou répondre à cet e-mail, <a target="_blank" style="color: rgb(63, 63, 63);" href="http://<%= Spree::Config[:site_url]%>/contact"><font color="#636363">cliquez ici.</font></a></font>
+        </td>
+      </tr>
+    </tbody></table>
+</div>
