@@ -3,10 +3,11 @@ class NewsletterMailer < ActionMailer::Base
   
    def send_newsletter(newsletter,user)
     @subject    =  newsletter.subject
-    @body       =  newsletter.body
-    @recipients = user.email
-    @from       = Spree::Config[:order_from]
+    @body       =  {"newsletter" => newsletter}
+    @recipients =  user.email
+    @from       = "newsletter@fxmodelrc.com"
     @sent_on    = Time.now
+    @content_type = "text/html"
   end
 
 end
