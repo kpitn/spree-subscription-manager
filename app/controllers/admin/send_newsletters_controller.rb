@@ -40,7 +40,7 @@ class Admin::SendNewslettersController < Admin::BaseController
   protected
 
   def get_newsletter
-       @newsletter=Newsletter.find(params[:newsletter_id])
+    @newsletter=Newsletter.find_by_permalink(params[:newsletter_id])
   end
 
 end
