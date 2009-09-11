@@ -5,6 +5,8 @@ class Newsletter < ActiveRecord::Base
   has_many :senders, :as => :sender
 
 
+  xss_terminate :except => [ :body ]
+
   validates_presence_of :subject
   validates_presence_of :body
 

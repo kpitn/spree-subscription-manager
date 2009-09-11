@@ -4,6 +4,7 @@ class CreateTrackNewsletter < ActiveRecord::Migration
       t.references :newsletter
       t.references :subscription
       t.string :state
+      t.timestamps
     end
     add_index :newsletter_tracks, [:newsletter_id,:subscription_id]
 
