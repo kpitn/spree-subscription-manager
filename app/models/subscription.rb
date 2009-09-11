@@ -1,6 +1,7 @@
 class Subscription < ActiveRecord::Base
   belongs_to :user
   belongs_to :mailing_list
+  has_many :tracks ,:class_name=>"NewsletterTrack"
 
   EmailAddress = begin
     qtext = '[^\\x0d\\x22\\x5c\\x80-\\xff]'

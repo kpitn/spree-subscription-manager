@@ -6,33 +6,91 @@
 <p><label for="subject"><%= t("subject") %></label><br/>
 <%= form.text_field 'subject' %></p>
 
-<p><%= form.text_area :body,:class=>"ckeditor" %></p>
+<p><%= form.text_area :body %></p>
 
 
 
 <% content_for :head do -%>
   <%= javascript_include_tag "ckeditor/ckeditor.js" %>
   <script type="text/javascript">
-  window.onload = function()
+// When opening a dialog, its "definition" is created for it, for
+// each editor instance. The "dialogDefinition" event is then
+// fired. We should use this event to make customizations to the
+// definition of existing dialogs.
+CKEDITOR.on( 'dialogDefinition', function( ev )
   {
-    CKEDITOR.editorConfig = function( config )
+          // Take the dialog name and its definition from the event
+          // data.
+          var dialogName = ev.data.name;
+          var dialogDefinition = ev.data.definition;
+
+          // Check if the definition is from the dialog we're
+          // interested on (the "Link" dialog).
+          if ( dialogName == 'image' )
+          {
+                 /* // Get a reference to the "Link Info" tab.
+                  var infoTab = dialogDefinition.getContents( 'info' );
+
+                  // Add a text field to the "info" tab.
+                  infoTab.add( {
+                                  type : 'text',
+                                  label : 'My Custom Field',
+                                  id : 'customField',
+                                  'default' : 'Sample!',
+                                  validate : function()
+                                  {
+                                          if ( /\d/.test( this.getValue() ) )
+                                                  return 'My Custom Field must not contain digits';
+                                  }
+                          });
+
+                  // Remove the "Link Type" combo and the "Browser
+                  // Server" button from the "info" tab.
+                  infoTab.remove( 'linkType' );
+                  infoTab.remove( 'browse' );
+
+                  // Set the default value for the URL field.
+                  var urlField = infoTab.get( 'url' );
+                  urlField['default'] = 'www.example.com';
+
+                  // Remove the "Target" tab from the "Link" dialog.
+                  dialogDefinition.removeContents( 'target' );*/
+
+                  // Add a new tab to the "Link" dialog.
+                  dialogDefinition.addContents({
+                          id : 'customTab',
+                          label : 'Envoyer une image',
+                          accessKey : 'M',
+                          elements : [
+                                  {
+                                          id : 'myField1',
+                                          type : 'file',
+                                          label : 'My Text Field'
+                                  },
+                                  {
+                                          id : 'myField2',
+                                          type : 'text',
+                                          label : 'Another Text Field'
+                                  }
+                          ]
+                  });
+          }
+  });
+
+ window.onload = function()
+ {
+    var editor = CKEDITOR.replace( 'newsletter_body',
     {
-    config.toolbar_Full =
-    [
-        ['Source','-','Save','NewPage','Preview','-','Templates'],
-        ['Cut','Copy','Paste','PasteText','PasteFromWord','-','Print', 'SpellChecker', 'Scayt'],
-        ['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
-        ['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField'],
-        '/',
-        ['Bold','Italic','Underline','Strike','-','Subscript','Superscript'],
-        ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'],
-        ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
-        '/',
-        ['Styles','Format','Font','FontSize'],
-        ['TextColor','BGColor']
-    ];
-      config.entities = false;
-    }
+      // Defines a simpler toolbar to be used in this sample.
+      // Note that we have added out "MyButton" button here.
+      entities : false
+    });
+  
   }
+
+
+
+
+
   </script>
 <% end -%>
