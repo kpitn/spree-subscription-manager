@@ -2,7 +2,7 @@ class Newsletter < ActiveRecord::Base
   belongs_to :mailing_list
   has_many :tracks ,:class_name=>"NewsletterTrack"
 
-  has_many :senders, :as => :send
+  has_many :senders, :as => :sender
 
 
   validates_presence_of :subject

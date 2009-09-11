@@ -8,8 +8,8 @@ class NewsletterMailer < ActionMailer::Base
     @from       = "newsletter@fxmodelrc.com"
     @sent_on    = Time.now
     @content_type = "text/html"
-    @headers["send_id"]=newsletter.id
-    @headers["send_type"]="Newsletter"
+    @headers["sender_id"]=newsletter.id
+    @headers["sender_type"]="Newsletter"
   end
 
 end
