@@ -1,6 +1,7 @@
 class NewsletterMailer < ActionMailer::Base
    self.delivery_method = :activerecord
-  
+   layout 'newsletter'
+
    def send_newsletter(newsletter,user)
     @subject    =  newsletter.subject
     @body       =  {"newsletter" => newsletter}

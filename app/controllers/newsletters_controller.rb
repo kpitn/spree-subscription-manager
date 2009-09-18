@@ -1,5 +1,12 @@
 class NewslettersController < Spree::BaseController 
 
+  def show
+    @newsletter=Newsletter.find_by_param(params[:id])
+    respond_to do |format|
+      format.html{render :layout=>"newsletter"}
+    end
+  end
+  
   def subscribe
 
 
@@ -20,7 +27,7 @@ class NewslettersController < Spree::BaseController
           else
             format.js {
               render :update do |page|
-                page << "alert('#{escape_javascript(subscription.errors.full_messages.to_s)}')";
+                page << "alert('Veuillez saisir un email valide.')";
               end
             }
           end

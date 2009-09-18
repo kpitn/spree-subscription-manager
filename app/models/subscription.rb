@@ -21,5 +21,5 @@ class Subscription < ActiveRecord::Base
   end
   
   #validates_presence_of :user_id, :allow_nil => true
-  validates_format_of :email, :with => EmailAddress , :if => "user_id==nil"
+  validates_format_of :email, :with => EmailAddress , :if => "user_id==nil", :message=>"Vous devez saisir un mail"
 end

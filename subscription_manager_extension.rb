@@ -9,6 +9,7 @@ class SubscriptionManagerExtension < Spree::Extension
   define_routes do |map|
     map.connect "/newsletter", :controller=>"newsletters",:action=>"subscribe"
     map.connect "/newsletter_see", :controller=>"newsletters",:action=>"see"
+    map.resources :newsletters
     map.namespace :admin do |admin|
       admin.resources :mailing_lists
       admin.resources :newsletters do |news|

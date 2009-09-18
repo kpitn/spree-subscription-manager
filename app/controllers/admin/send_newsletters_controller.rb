@@ -23,9 +23,8 @@ class Admin::SendNewslettersController < Admin::BaseController
 #    log_not_ok=Logger.new("#{RAILS_ROOT}/log/newsletter/#{DateTime.now.strftime("%Y%m%d_%H%d%S")}_not_ok.yml")
 
     #users=User.find_by_sql("select * from users inner join subscriptions ON (users.id=subscriptions.user_id)")
-    users=User.find_all_by_login("pierre.basile@gmail.com")
-    #users=@newsletter.mailing_list.users
-
+    #users=User.find_all_by_login("pierre.basile@gmail.com")
+    users=@newsletter.mailing_list.users
 
     users.each do |user|
       NewsletterMailer.deliver_send_newsletter(@newsletter,user)
