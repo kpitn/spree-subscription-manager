@@ -1,9 +1,19 @@
 class NewslettersController < Spree::BaseController 
 
   def show
-    @newsletter=Newsletter.find_by_param(params[:id])
     respond_to do |format|
-      format.html{render :layout=>"newsletter"}
+      if params[:id]
+        @newsletter=Newsletter.find_by_param(params[:id].gsub(">",""))
+        if @newsletter
+          format.html{render :layout=>"newsletter"}
+        else
+          flash[:notice] = "Cette newsletter n'existe pas"
+          format.html{ redirect_to("/") }
+        end
+      else
+        flash[:notice] = "Cette newsletter n'existe pas"
+        format.html{ redirect_to("/") }
+      end
     end
   end
   
